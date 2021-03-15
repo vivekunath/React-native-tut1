@@ -20,7 +20,7 @@ const Card = ({imgDetails}) => {
         <View>
           <Text style={style.name}>{imgDetails.name}</Text>
           <Text style={style.description}>{imgDetails.description}</Text>
-          <Text style={style.price}>{imgDetails.price}</Text>
+          <Text style={style.price}> ₹{imgDetails.basePrice}</Text>
         </View>
       </TouchableOpacity>
     </View>

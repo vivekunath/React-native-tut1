@@ -1,8 +1,10 @@
 import React from 'react';
-import {TouchableOpacity, View, Image, StyleSheet, Text} from 'react-native';
+import {TouchableOpacity, View, Image, StyleSheet, Text,Badge} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
+import {useSelector} from 'react-redux';
 
 function Header(props) {
+  const products = useSelector((items) => items.Products);
   const navigation = useNavigation();
   return (
     <View style={styles.header}>
@@ -16,10 +18,14 @@ function Header(props) {
       </TouchableOpacity>
       <Text style={styles.screen}>{props.name}</Text>
       <TouchableOpacity onPress={() => navigation.navigate('CartScreen')}>
-        {!props.hideCartButton && <Image
+        {!props.hideCartButton && <View><Image
           style={styles.cartButton}
           source={require('../../assets/images/otherImages/shopingCart.png')}
-        />}
+        />
+        {products.length > 0 &&
+          <View style={styles.badgeView}><Text style={styles.badge}>{products.length}</Text></View>}
+        </View>
+        }
       </TouchableOpacity>
     </View>
   );
@@ -37,10 +43,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   backButton: {
-    width: 30,
-    height: 30,
+    width: 50,
+    height: 40,
     marginLeft: 5,
-    marginTop: 3,
+    marginTop: 0,
+    
   },
   cartButton: {
     width: 30,
@@ -56,4 +63,22 @@ const styles = StyleSheet.create({
        alignSelf:"center",
        position:"relative"
   },
+  badge:{
+    fontSize:17,
+    fontWeight:"bold",
+    position:"absolute",
+    marginLeft:3,
+    alignSelf:"center"
+  
+    
+  },
+  badgeView:{
+    position:"absolute",
+    backgroundColor:"#39FF14",
+    borderRadius:22/2,
+    width:22,
+    height:22,
+    alignSelf:"center"
+    // borderradius: 50%,
+  }
 });

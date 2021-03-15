@@ -1,2 +1,5 @@
 export const ADD_PRODUCT = "ADD_PRODUCT";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
+export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
+export const CHECKOUT = "CHECKOUT"
+// export const QUANTITY_OF_PRODUCT = "QUANTITY_OF_PRODUCT";
